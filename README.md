@@ -214,3 +214,99 @@ Souhaitez-vous maintenant que je vous fournisse :
 ✅ Un script Python adapté à votre structure exacte ?
 ✅ Un guide pas à pas PDF à partager avec vos équipes internes ?
 
+Voici **trois variantes et alternatives** à la solution principale basée sur **Microsoft Forms + QR Code + Python + intégration dans le back-office**. Chaque variante est adaptée à différents **niveaux de sécurité**, **contextes technologiques**, ou **ressources disponibles**.
+
+---
+
+## 🔁 Variante 1 : **Google Forms + Google Sheets + Apps Script + Python**
+
+### 🔹 Description :
+
+Utilise **Google Forms** pour collecter les données via mobile ou QR Code, stockées automatiquement dans **Google Sheets**. Ensuite, un **script Python** récupère les données via l’API Google Sheets et les injecte dans l’application Python.
+
+### 🔧 Stack :
+
+* **Frontend** : Google Forms
+* **Backend source** : Google Sheets (réponses)
+* **Accès** : via l’API Google Sheets avec authentification OAuth
+* **Integration Python** : via `gspread`, `oauth2client`, ou API REST
+
+### ✅ Avantages :
+
+* 100% gratuit et accessible sans licence Microsoft
+* Très rapide à déployer (moins de 30 minutes)
+* Compatible mobile / QR code
+* Écosystème collaboratif Google (Docs, Drive)
+
+### ❗ Limites :
+
+* Moins sécurisé pour les données sensibles (RGPD)
+* Moins d'intégration native dans un environnement Microsoft
+* API Google à configurer (OAuth 2.0)
+
+---
+
+## 🔁 Variante 2 : **Jotform / Typeform + Webhook + API Flask**
+
+### 🔹 Description :
+
+Utiliser un **form builder avancé** comme [Typeform](https://www.typeform.com) ou [Jotform](https://www.jotform.com), avec **webhook intégré** pour appeler directement votre endpoint Python dès qu’une réponse est soumise.
+
+### 🔧 Stack :
+
+* **Frontend** : Typeform ou Jotform
+* **Webhook** : Appel HTTP vers `/api/events/import`
+* **Backend Python** : route Flask ou FastAPI traitant la charge JSON
+
+### ✅ Avantages :
+
+* UX très soignée, fluide et moderne
+* Webhook = traitement en temps réel
+* Pas besoin de cron ou lecture de fichier
+
+### ❗ Limites :
+
+* Compte pro requis pour les webhooks (freemium limité)
+* Configuration API et endpoint à sécuriser (JWT, IP filtering…)
+
+---
+
+## 🔁 Variante 3 : **Power Apps + Power Automate + API Python (Azure)**
+
+### 🔹 Description :
+
+Utilisation de **Microsoft Power Apps** pour créer un formulaire mobile personnalisé et connecté, combiné avec **Power Automate** (anciennement Flow) pour envoyer les données vers une **API Python déployée sur Azure**.
+
+### 🔧 Stack :
+
+* **Frontend** : Power Apps (interface no-code, personnalisable)
+* **Workflow** : Power Automate (intégration visuelle, logique métier)
+* **Backend** : Azure Function / Flask API ou App Service
+
+### ✅ Avantages :
+
+* UX plus complète que Forms (avec logique conditionnelle, filtres dynamiques…)
+* Sécurité entreprise (AAD, SSO, logs)
+* Intégration directe avec Azure, Teams, SharePoint
+
+### ❗ Limites :
+
+* Nécessite licences Power Apps (plan par utilisateur ou par application)
+* Montée en compétence sur Power Platform
+* Dépendance à l’écosystème Microsoft
+
+---
+
+## 📊 Tableau comparatif synthétique
+
+| Variante                   | Technologie              | Niveau de sécurité | Déploiement | Automatisation   | Coût                 |
+| -------------------------- | ------------------------ | ------------------ | ----------- | ---------------- | -------------------- |
+| **Microsoft Forms** (base) | Forms + Excel + Python   | 🌕🌕🌕             | ⚙️ Facile   | ✅ Cron ou script | 🟢 Inclus M365       |
+| **Google Forms**           | GForms + Sheets + Python | 🌕🌕               | ⚙️ Facile   | ✅ via API Google | 🟢 Gratuit           |
+| **Typeform / Jotform**     | Form + Webhook + API     | 🌕🌕🌕             | ⚙️ Moyen    | ✅ Temps réel     | 🟡 Freemium          |
+| **Power Apps**             | Power Platform           | 🌕🌕🌕🌕           | ⚙️ Avancé   | ✅ Temps réel     | 🔴 Payant (licences) |
+
+---
+
+Souhaitez-vous que je développe une **variante complète** (ex : avec Google Forms ou Power Apps) ou que je vous fournisse **un exemple de webhook Flask/API** pour Typeform ?
+
